@@ -1,0 +1,17 @@
+version: "3" # The version of the Compose file syntax
+
+services: # The list of services to run
+  app: # The name of the service
+    build: . # The path to the Dockerfile
+    ports: # The list of ports to expose
+      - "3000:3000"
+    volumes: # The list of volumes to mount
+      - .:/home/node/app
+
+  db: # The name of the service
+    image: mysql:8.0.30-debian
+    environment: # The list of environment variables
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: nest
+    ports: # The list of ports to expose
+      - "27017:27017"

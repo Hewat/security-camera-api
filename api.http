@@ -1,0 +1,9 @@
+GET http://localhost:3000/cameras
+###
+GET http://localhost:3000/cameras/1
+###
+POST http://localhost:3000/cameras
+###
+PATCH GET http://localhost:3000/cameras/1
+###
+DELETE GET http://localhost:3000/cameras/1
