@@ -25,6 +25,11 @@ export class CamerasController {
     return this.camerasService.findAll();
   }
 
+  @Get('/findCamerasByCustomer/:id')
+  findCamerasByCustomer(@Param('id') id: string) {
+    return this.camerasService.findCamerasByCustomer(id);
+  }
+
   @Get(':camera_id')
   findOne(@Param('camera_id') id: string) {
     return this.camerasService.findOne(id);

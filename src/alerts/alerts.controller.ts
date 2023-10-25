@@ -30,6 +30,14 @@ export class AlertsController {
     return this.alertsService.findOne(id);
   }
 
+  @Post('/findAlertsByDateInterval')
+  findAlertsByDateInterval(
+    @Body('startDate') startDate: Date,
+    @Body('endDate') endDate: Date,
+  ) {
+    return this.alertsService.findAlertsByDateInterval(startDate, endDate);
+  }
+
   @Patch(':id')
   update(@Param('id') id: string, @Body() updateAlertDto: UpdateAlertDto) {
     return this.alertsService.update(id, updateAlertDto);

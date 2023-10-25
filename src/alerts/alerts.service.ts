@@ -27,6 +27,21 @@ export class AlertsService {
     });
   }
 
+  async findAlertsByDateInterval(startDate: Date, endDate: Date) {
+    console.log('start date', startDate, 'end date', endDate);
+    const startDateString = new Date(startDate).toISOString();
+    const endDateString = new Date(endDate).toISOString();
+
+    return await this.prisma.alerts.findMany({
+      where: {
+        ocurredAt: {
+          gte: startDateString,
+          lte: endDateString,
+        },
+      },
+    });
+  }
+
   findOne(id: string) {
     return this.prisma.alerts.findUniqueOrThrow({
       where: {

@@ -28,7 +28,12 @@ DELETE http://localhost:3000/customers/5e6903d1-6dd5-4508-86ed-2c15b6725ce0
 
 ###
 GET http://localhost:3000/cameras
+
+//Find cameras by customer id
 ###
+GET http://localhost:3000/cameras/findCamerasByCustomer/885f34bc-c07f-43e6-af1b-40c8ed7b9350
+###
+
 GET http://localhost:3000/cameras/29d85c85-0073-4810-9396-4feb6a5b4dda
 ###
 POST http://localhost:3000/cameras
@@ -68,21 +73,36 @@ GET http://localhost:3000/alerts
 ###
 GET http://localhost:3000/alerts/29d85c85-0073-4810-9396-4feb6a5b4dda
 ###
+
+
+//Find alerts by date interval
+###
+POST  http://localhost:3000/alerts/findAlertsByDateInterval
+Content-Type: application/json
+
+{
+    "startDate": "2021-02-21",
+    "endDate": "2023-03-01"
+}
+
+###
+
+//Register an alert
 POST http://localhost:3000/alerts
 Content-Type: application/json
 
 {
-    "occurredAt": "2023-02-01T03:44:33.060Z",
+    "occurredAt": "2021-02-21T03:44:33.060Z",
     "cameraId": "665f6459-9dcf-4135-8d06-443cc9c2e0b9"
 }
 
 ###
-PATCH http://localhost:3000/alerts/2eb0a132-37aa-4abd-adcd-e2dac77ec71c
+PATCH http://localhost:3000/alerts/ba8c5754-b4dc-467c-a7e8-795c809316e5
 Content-Type: application/json
 
 {
-    "name": "name updated"
+    "occurredAt": "2022-02-01T03:44:33.060Z"
 }
 
 ###
-DELETE http://localhost:3000/alerts/5e6903d1-6dd5-4508-86ed-2c15b6725ce0
+DELETE http://localhost:3000/alerts/ba8c5754-b4dc-467c-a7e8-795c809316e5
