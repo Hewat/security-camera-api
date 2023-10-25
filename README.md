@@ -14,3 +14,17 @@ PARA TESTAR:
 4 - executar as chamadas HTTP disponibilizadas pelo botão "Send Request". Estão disponibilizadas as APIs de Customers, Cameras e Alerts.
 
 ![Alt text](image.png)
+
+Abaixo apenas alguns exemplos da interface para teste:
+
+Exemplo de request para GET Customers:
+
+![Alt text](image-1.png)
+
+Exemplo de request para GET Cameras:
+
+![Alt text](image-2.png)
+
+Exemplo de Request para POST um novo alert:
+
+![Alt text](image-3.png)
