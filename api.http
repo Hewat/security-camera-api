@@ -1,17 +1,21 @@
 //------------CUSTOMERS API ------------//
 
+// GET Customers
 ###
 GET http://localhost:3000/customers
 ###
+// GET Customer by Id
 GET http://localhost:3000/customers/29d85c85-0073-4810-9396-4feb6a5b4dda
 ###
+// CREATE Customers
 POST http://localhost:3000/customers
 Content-Type: application/json
 
 {
-    "name": "Customer 33"
+    "name": "Customer 44"
 }
 
+// UPDATE Customers
 ###
 PATCH http://localhost:3000/customers/2eb0a132-37aa-4abd-adcd-e2dac77ec71c
 Content-Type: application/json
@@ -20,32 +24,38 @@ Content-Type: application/json
     "name": "name updated"
 }
 
+//DELETE Customer
 ###
 DELETE http://localhost:3000/customers/5e6903d1-6dd5-4508-86ed-2c15b6725ce0
 
 
 //------------CAMERAS API ------------//
 
+//GET Cameras with filter
 ###
 GET http://localhost:3000/cameras?isEnabled=false
 
-//Find cameras by customer id
+//GET cameras by customer id
 ###
-GET http://localhost:3000/cameras/findCamerasByCustomer/885f34bc-c07f-43e6-af1b-40c8ed7b9350
-###
+GET http://localhost:3000/cameras/findCamerasByCustomer/59ddd9b5-b642-48ed-88a1-f26bbbb2f052
 
+//GET cameras by camera id
+###
 GET http://localhost:3000/cameras/29d85c85-0073-4810-9396-4feb6a5b4dda
 ###
+
+//CREATE camera
 POST http://localhost:3000/cameras
 Content-Type: application/json
 
 {
     "name": "Camera 333",
-    "ip": "222.81.216.333",
+    "ip": "112.41.216.333",
     "isEnabled": true,
-    "customerId": "172a325c-6664-45b5-bd8f-99de50a0cfbc"
+    "customerId": "59ddd9b5-b642-48ed-88a1-f26bbbb2f052"
 }
 
+//UPDATE camera
 ###
 PATCH http://localhost:3000/cameras/29d85c85-0073-4810-9396-4feb6a5b4dda
 Content-Type: application/json
@@ -54,28 +64,34 @@ Content-Type: application/json
     "isEnabled": false
 }
 
+//DELETE camera
 ###
 DELETE http://localhost:3000/cameras/9eb2664d-70c2-4625-a36b-b554ae51fc61
+
+//Activate/Deactivate camera
 ###
 PATCH http://localhost:3000/cameras/activateCamera/48884eab-04bf-49ca-8c04-7027b86a6046
 Content-Type: application/json
 
 ###
-PATCH http://localhost:3000/cameras/deactivateCamera/665f6459-9dcf-4135-8d06-443cc9c2e0b9
+PATCH http://localhost:3000/cameras/deactivateCamera/7eb3500c-b63e-4270-b700-cd24100aada4
 Content-Type: application/json
 
 
 
 //------------ALERTS API ------------//
 
+//GET alerts with filters
 ###
 GET http://localhost:3000/alerts?customerId=885f34bc-c07f-43e6-af1b-40c8ed7b9350&cameraId=74ea54ff-881b-4dab-935e-02f4d8b879b4&startDate=2021-02-21&endDate=2023-03-01
 ###
+
+//GET alerts by alert id
 GET http://localhost:3000/alerts/29d85c85-0073-4810-9396-4feb6a5b4dda
 ###
 
 
-//Find alerts by date interval
+//GET alerts by date interval
 ###
 POST  http://localhost:3000/alerts/findAlertsByDateInterval
 Content-Type: application/json
@@ -85,17 +101,18 @@ Content-Type: application/json
     "endDate": "2023-03-01"
 }
 
-###
 
-//Register an alert
+//CREATE an alert
+###
 POST http://localhost:3000/alerts
 Content-Type: application/json
 
 {
     "occurredAt": "2023-10-25T00:00:00.000Z",
-    "cameraId": "4e970328-6382-4d7f-a97d-9c746874bdda"
+    "cameraId": "51a5c8ca-c121-45fd-8e0c-78fb1d62e16d"
 }
 
+//UPDATE an alert
 ###
 PATCH http://localhost:3000/alerts/ba8c5754-b4dc-467c-a7e8-795c809316e5
 Content-Type: application/json
@@ -104,5 +121,6 @@ Content-Type: application/json
     "occurredAt": "2022-02-01T03:44:33.060Z"
 }
 
+//DELETE an alert
 ###
 DELETE http://localhost:3000/alerts/ba8c5754-b4dc-467c-a7e8-795c809316e5
