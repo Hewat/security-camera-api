@@ -1,7 +1,8 @@
-import { Injectable } from '@nestjs/common';
+import { Injectable, Query } from '@nestjs/common';
 import { PrismaService } from 'src/prisma/prisma.service';
 import { CreateAlertDto } from './dto/create-alert.dto';
 import { UpdateAlertDto } from './dto/update-alert.dto';
+import { isArray } from 'class-validator';
 
 @Injectable()
 export class AlertsService {
@@ -11,7 +12,9 @@ export class AlertsService {
     if (!createAlertDto.cameraId) {
       throw new Error('An alert must be associated with a camera');
     }
-    if (createAlertDto.cameraId.length !== 1) {
+
+    if (isArray(createAlertDto) && createAlertDto.cameraId.length > 1) {
+      console.log(createAlertDto.cameraId.length);
       throw new Error('An alert must be associated with a single camera');
     }
     return this.prisma.alerts.create({
@@ -22,15 +25,19 @@ export class AlertsService {
     });
   }
 
-  findAll() {
-    return this.prisma.alerts.findMany({
+  async findAll(query: any) {
+    const alerts = await this.prisma.alerts.findMany({
+      where: {
+        camera: {
+          customerId: query.customerId,
+        },
+      },
       orderBy: {
         createdAt: 'desc',
       },
-      include: {
-        camera: true,
-      },
     });
+
+    return alerts;
   }
 
   async findAlertsByDateInterval(startDate: Date, endDate: Date) {

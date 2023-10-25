@@ -9,7 +9,7 @@ POST http://localhost:3000/customers
 Content-Type: application/json
 
 {
-    "name": "Customer 1"
+    "name": "Customer 22"
 }
 
 ###
@@ -27,7 +27,7 @@ DELETE http://localhost:3000/customers/5e6903d1-6dd5-4508-86ed-2c15b6725ce0
 //------------CAMERAS API ------------//
 
 ###
-GET http://localhost:3000/cameras
+GET http://localhost:3000/cameras?isEnabled=false
 
 //Find cameras by customer id
 ###
@@ -40,10 +40,10 @@ POST http://localhost:3000/cameras
 Content-Type: application/json
 
 {
-    "name": "Camera 1",
-    "ip": "226.81.216.235",
+    "name": "Camera 222",
+    "ip": "226.81.216.233",
     "isEnabled": true,
-    "customerId": "885f34bc-c07f-43e6-af1b-40c8ed7b9350"
+    "customerId": "702464fa-c613-4fea-8591-bdb3d300e342"
 }
 
 ###
@@ -61,7 +61,7 @@ PATCH http://localhost:3000/cameras/activateCamera/48884eab-04bf-49ca-8c04-7027b
 Content-Type: application/json
 
 ###
-PATCH http://localhost:3000/cameras/deactivateCamera/48884eab-04bf-49ca-8c04-7027b86a6046
+PATCH http://localhost:3000/cameras/deactivateCamera/665f6459-9dcf-4135-8d06-443cc9c2e0b9
 Content-Type: application/json
 
 
@@ -69,7 +69,7 @@ Content-Type: application/json
 //------------ALERTS API ------------//
 
 ###
-GET http://localhost:3000/alerts
+GET http://localhost:3000/alerts?customerId=885f34bc-c07f-43e6-af1b-40c8ed7b9350&cameraId=74ea54ff-881b-4dab-935e-02f4d8b879b4&startDate=2021-02-21&endDate=2023-03-01
 ###
 GET http://localhost:3000/alerts/29d85c85-0073-4810-9396-4feb6a5b4dda
 ###
@@ -92,8 +92,8 @@ POST http://localhost:3000/alerts
 Content-Type: application/json
 
 {
-    "occurredAt": "2021-02-21T03:44:33.060Z",
-    "cameraId": "665f6459-9dcf-4135-8d06-443cc9c2e0b9"
+    "occurredAt": "2023-10-25T00:00:00.000Z",
+    "cameraId": "74ea54ff-881b-4dab-935e-02f4d8b879b4"
 }
 
 ###

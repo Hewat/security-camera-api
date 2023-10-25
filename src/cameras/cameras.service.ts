@@ -29,21 +29,6 @@ export class CamerasService {
       );
     }
 
-    // Check if the camera is already associated with another customer
-    const cameraWithSameIp = await this.prisma.camera.findFirst({
-      where: {
-        ip,
-        NOT: {
-          customerId: null,
-        },
-      },
-    });
-    if (cameraWithSameIp) {
-      throw new Error(
-        'This camera is already associated with another customer',
-      );
-    }
-
     return this.prisma.camera.create({
       data: {
         name,
@@ -56,6 +41,20 @@ export class CamerasService {
 
   findAll() {
     return this.prisma.camera.findMany({
+      orderBy: {
+        createdAt: 'desc',
+      },
+      include: {
+        alerts: true,
+      },
+    });
+  }
+
+  findByIsEnabled(isEnabled: boolean) {
+    return this.prisma.camera.findMany({
+      where: {
+        isEnabled: isEnabled,
+      },
       orderBy: {
         createdAt: 'desc',
       },

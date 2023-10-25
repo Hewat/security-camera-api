@@ -6,6 +6,7 @@ import {
   Patch,
   Param,
   Delete,
+  Query,
 } from '@nestjs/common';
 import { CamerasService } from './cameras.service';
 import { CreateCameraDto } from './dto/create-camera.dto';
@@ -21,8 +22,14 @@ export class CamerasController {
   }
 
   @Get()
-  findAll() {
-    return this.camerasService.findAll();
+  findAll(@Query('isEnabled') isEnabled?: string | boolean) {
+    const isEnabledBoolean =
+      isEnabled === 'true' ? true : isEnabled === 'false' ? false : undefined;
+    if (isEnabledBoolean !== undefined) {
+      return this.camerasService.findByIsEnabled(isEnabledBoolean);
+    } else {
+      return this.camerasService.findAll();
+    }
   }
 
   @Get('/findCamerasByCustomer/:id')

@@ -13,5 +13,6 @@ export class CreateCameraDto {
   @IsNotEmpty()
   isEnabled: boolean;
 
+  @IsString()
   customerId: string;
 }
