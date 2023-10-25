@@ -8,6 +8,12 @@ export class AlertsService {
   constructor(private prisma: PrismaService) {}
 
   create(createAlertDto: CreateAlertDto) {
+    if (!createAlertDto.cameraId) {
+      throw new Error('An alert must be associated with a camera');
+    }
+    if (createAlertDto.cameraId.length !== 1) {
+      throw new Error('An alert must be associated with a single camera');
+    }
     return this.prisma.alerts.create({
       data: {
         ocurredAt: createAlertDto.occurredAt,

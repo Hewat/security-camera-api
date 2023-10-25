@@ -7,19 +7,69 @@ import { PrismaService } from 'src/prisma/prisma.service';
 export class CamerasService {
   constructor(private prisma: PrismaService) {}
 
-  create(createCameraDto: CreateCameraDto) {
+  async create(createCameraDto: CreateCameraDto) {
+    const { name, ip, customerId, isEnabled } = createCameraDto;
+
+    // Check if the IP is valid
+    const ipRegex = /^(?:[0-9]{1,3}\.){3}[0-9]{1,3}$/;
+    if (!ipRegex.test(ip)) {
+      throw new Error('Invalid IP address');
+    }
+
+    // Check if the customer already has a camera with the same IP
+    const existingCamera = await this.prisma.camera.findFirst({
+      where: {
+        customerId,
+        ip,
+      },
+    });
+    if (existingCamera) {
+      throw new Error(
+        'A camera with the same IP already exists for this customer',
+      );
+    }
+
+    // Check if the camera is already associated with another customer
+    const cameraWithSameIp = await this.prisma.camera.findFirst({
+      where: {
+        ip,
+        NOT: {
+          customerId: null,
+        },
+      },
+    });
+    if (cameraWithSameIp) {
+      throw new Error(
+        'This camera is already associated with another customer',
+      );
+    }
+
     return this.prisma.camera.create({
       data: {
-        name: createCameraDto.name,
-        ip: createCameraDto.ip,
-        customerId: createCameraDto.customerId,
-        isEnabled: createCameraDto.isEnabled,
+        name,
+        ip,
+        customerId,
+        isEnabled,
       },
     });
   }
 
   findAll() {
     return this.prisma.camera.findMany({
+      orderBy: {
+        createdAt: 'desc',
+      },
+      include: {
+        alerts: true,
+      },
+    });
+  }
+
+  findCamerasByCustomer(id: string) {
+    return this.prisma.camera.findMany({
+      where: {
+        customerId: id,
+      },
       orderBy: {
         createdAt: 'desc',
       },
