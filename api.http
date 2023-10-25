@@ -9,7 +9,7 @@ POST http://localhost:3000/customers
 Content-Type: application/json
 
 {
-    "name": "Customer 22"
+    "name": "Customer 33"
 }
 
 ###
@@ -40,10 +40,10 @@ POST http://localhost:3000/cameras
 Content-Type: application/json
 
 {
-    "name": "Camera 222",
-    "ip": "226.81.216.233",
+    "name": "Camera 333",
+    "ip": "222.81.216.333",
     "isEnabled": true,
-    "customerId": "702464fa-c613-4fea-8591-bdb3d300e342"
+    "customerId": "172a325c-6664-45b5-bd8f-99de50a0cfbc"
 }
 
 ###
@@ -93,7 +93,7 @@ Content-Type: application/json
 
 {
     "occurredAt": "2023-10-25T00:00:00.000Z",
-    "cameraId": "74ea54ff-881b-4dab-935e-02f4d8b879b4"
+    "cameraId": "4e970328-6382-4d7f-a97d-9c746874bdda"
 }
 
 ###
