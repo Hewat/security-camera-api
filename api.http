@@ -1,9 +1,34 @@
 GET http://localhost:3000/cameras
 ###
-GET http://localhost:3000/cameras/1
+GET http://localhost:3000/cameras/29d85c85-0073-4810-9396-4feb6a5b4dda
 ###
 POST http://localhost:3000/cameras
+Content-Type: application/json
+
+{
+    "name": "Camera 3",
+    "ip": "226.81.216.235",
+    "isEnabled": true,
+    "customer_id": "00004"
+}
+
 ###
-PATCH GET http://localhost:3000/cameras/1
+PATCH http://localhost:3000/cameras/29d85c85-0073-4810-9396-4feb6a5b4dda
+Content-Type: application/json
+
+{
+    "isEnabled": false
+}
+
 ###
-DELETE GET http://localhost:3000/cameras/1
+DELETE http://localhost:3000/cameras/00f5d002-e1c9-443a-a5e8-71245d0b364f
+
+###
+PATCH http://localhost:3000/cameras/activateCamera/48884eab-04bf-49ca-8c04-7027b86a6046
+Content-Type: application/json
+
+###
+PATCH http://localhost:3000/cameras/deactivateCamera/48884eab-04bf-49ca-8c04-7027b86a6046
+Content-Type: application/json
+
+

@@ -1,4 +1,12 @@
-import { Controller, Get, Post, Body, Patch, Param, Delete } from '@nestjs/common';
+import {
+  Controller,
+  Get,
+  Post,
+  Body,
+  Patch,
+  Param,
+  Delete,
+} from '@nestjs/common';
 import { CamerasService } from './cameras.service';
 import { CreateCameraDto } from './dto/create-camera.dto';
 import { UpdateCameraDto } from './dto/update-camera.dto';
@@ -17,18 +25,31 @@ export class CamerasController {
     return this.camerasService.findAll();
   }
 
-  @Get(':id')
-  findOne(@Param('id') id: string) {
-    return this.camerasService.findOne(+id);
+  @Get(':camera_id')
+  findOne(@Param('camera_id') id: string) {
+    return this.camerasService.findOne(id);
   }
 
-  @Patch(':id')
-  update(@Param('id') id: string, @Body() updateCameraDto: UpdateCameraDto) {
-    return this.camerasService.update(+id, updateCameraDto);
+  @Patch(':camera_id')
+  update(
+    @Param('camera_id') id: string,
+    @Body() updateCameraDto: UpdateCameraDto,
+  ) {
+    return this.camerasService.update(id, updateCameraDto);
+  }
+
+  @Patch('/activateCamera/:camera_id')
+  activateCamera(@Param('camera_id') id: string) {
+    return this.camerasService.activateCamera(id);
+  }
+
+  @Patch('/deactivateCamera/:camera_id')
+  deactivateCamera(@Param('camera_id') id: string) {
+    return this.camerasService.deactivateCamera(id);
   }
 
   @Delete(':id')
   remove(@Param('id') id: string) {
-    return this.camerasService.remove(+id);
+    return this.camerasService.remove(id);
   }
 }

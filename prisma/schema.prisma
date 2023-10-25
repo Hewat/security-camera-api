@@ -6,6 +6,16 @@ generator client {
 }
 
 datasource db {
-  provider = "postgresql"
+  provider = "mysql"
   url      = env("DATABASE_URL")
+}
+
+model Camera{
+  id String @id @default(uuid())
+  name String
+  ip String
+  isEnabled Boolean @default(true)
+  customer_id String
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
 }
