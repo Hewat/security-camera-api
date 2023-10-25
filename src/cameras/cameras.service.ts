@@ -12,7 +12,7 @@ export class CamerasService {
       data: {
         name: createCameraDto.name,
         ip: createCameraDto.ip,
-        customer_id: createCameraDto.customer_id,
+        customerId: createCameraDto.customerId,
         isEnabled: createCameraDto.isEnabled,
       },
     });
@@ -42,7 +42,7 @@ export class CamerasService {
       data: {
         name: updateCameraDto.name,
         ip: updateCameraDto.ip,
-        customer_id: updateCameraDto.customer_id,
+        customerId: updateCameraDto.customerId,
         isEnabled: updateCameraDto.isEnabled,
       },
     });
