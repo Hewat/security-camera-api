@@ -10,6 +10,14 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
+
+model Customer {
+  id        String   @id @default(uuid())
+  name      String
+  cameras   Camera[] 
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
 model Camera {
   id          String    @id @default(uuid())
   name        String
@@ -19,12 +27,15 @@ model Camera {
   updatedAt   DateTime  @updatedAt
   customerId  String
   customer    Customer @relation(fields: [customerId], references: [id], onDelete: Cascade)
+  alerts      Alerts[]
 }
 
-model Customer {
-  id        String   @id @default(uuid())
-  name      String
-  cameras   Camera[] 
+model Alerts {
+  id      String   @id @default(uuid())
+  ocurredAt DateTime
+  camera    Camera   @relation(fields: [cameraId], references: [id])
+  cameraId  String 
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
 }
+

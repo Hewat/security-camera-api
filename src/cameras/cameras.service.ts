@@ -23,6 +23,9 @@ export class CamerasService {
       orderBy: {
         createdAt: 'desc',
       },
+      include: {
+        alerts: true,
+      },
     });
   }
 
@@ -30,6 +33,9 @@ export class CamerasService {
     return this.prisma.camera.findUniqueOrThrow({
       where: {
         id: id,
+      },
+      include: {
+        alerts: true,
       },
     });
   }

@@ -1,8 +1,8 @@
 import { IsNotEmpty, IsString } from 'class-validator';
 
-export class CreateCustomerDto {
+export class CreateAlertDto {
   @IsString()
   @IsNotEmpty()
-  name: string;
-  cameras: string[];
+  occurredAt: Date;
+  cameraId: string;
 }

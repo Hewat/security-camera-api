@@ -1,37 +1,4 @@
-GET http://localhost:3000/cameras
-###
-GET http://localhost:3000/cameras/29d85c85-0073-4810-9396-4feb6a5b4dda
-###
-POST http://localhost:3000/cameras
-Content-Type: application/json
-
-{
-    "name": "Camera 15",
-    "ip": "226.81.216.235",
-    "isEnabled": true,
-    "customerId": "2eb0a132-37aa-4abd-adcd-e2dac77ec71c"
-}
-
-###
-PATCH http://localhost:3000/cameras/29d85c85-0073-4810-9396-4feb6a5b4dda
-Content-Type: application/json
-
-{
-    "isEnabled": false
-}
-
-###
-DELETE http://localhost:3000/cameras/9eb2664d-70c2-4625-a36b-b554ae51fc61
-###
-PATCH http://localhost:3000/cameras/activateCamera/48884eab-04bf-49ca-8c04-7027b86a6046
-Content-Type: application/json
-
-###
-PATCH http://localhost:3000/cameras/deactivateCamera/48884eab-04bf-49ca-8c04-7027b86a6046
-Content-Type: application/json
-
-
-//CUSTOMERS API
+//------------CUSTOMERS API ------------//
 
 ###
 GET http://localhost:3000/customers
@@ -55,3 +22,67 @@ Content-Type: application/json
 
 ###
 DELETE http://localhost:3000/customers/5e6903d1-6dd5-4508-86ed-2c15b6725ce0
+
+
+//------------CAMERAS API ------------//
+
+###
+GET http://localhost:3000/cameras
+###
+GET http://localhost:3000/cameras/29d85c85-0073-4810-9396-4feb6a5b4dda
+###
+POST http://localhost:3000/cameras
+Content-Type: application/json
+
+{
+    "name": "Camera 1",
+    "ip": "226.81.216.235",
+    "isEnabled": true,
+    "customerId": "885f34bc-c07f-43e6-af1b-40c8ed7b9350"
+}
+
+###
+PATCH http://localhost:3000/cameras/29d85c85-0073-4810-9396-4feb6a5b4dda
+Content-Type: application/json
+
+{
+    "isEnabled": false
+}
+
+###
+DELETE http://localhost:3000/cameras/9eb2664d-70c2-4625-a36b-b554ae51fc61
+###
+PATCH http://localhost:3000/cameras/activateCamera/48884eab-04bf-49ca-8c04-7027b86a6046
+Content-Type: application/json
+
+###
+PATCH http://localhost:3000/cameras/deactivateCamera/48884eab-04bf-49ca-8c04-7027b86a6046
+Content-Type: application/json
+
+
+
+//------------ALERTS API ------------//
+
+###
+GET http://localhost:3000/alerts
+###
+GET http://localhost:3000/alerts/29d85c85-0073-4810-9396-4feb6a5b4dda
+###
+POST http://localhost:3000/alerts
+Content-Type: application/json
+
+{
+    "occurredAt": "2023-02-01T03:44:33.060Z",
+    "cameraId": "665f6459-9dcf-4135-8d06-443cc9c2e0b9"
+}
+
+###
+PATCH http://localhost:3000/alerts/2eb0a132-37aa-4abd-adcd-e2dac77ec71c
+Content-Type: application/json
+
+{
+    "name": "name updated"
+}
+
+###
+DELETE http://localhost:3000/alerts/5e6903d1-6dd5-4508-86ed-2c15b6725ce0

@@ -31,6 +31,9 @@ export class CustomersService {
       where: {
         id: id,
       },
+      include: {
+        cameras: true,
+      },
     });
   }
 
