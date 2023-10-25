@@ -41,7 +41,6 @@ export class AlertsService {
   }
 
   async findAlertsByDateInterval(startDate: Date, endDate: Date) {
-    console.log('start date', startDate, 'end date', endDate);
     const startDateString = new Date(startDate).toISOString();
     const endDateString = new Date(endDate).toISOString();
 
